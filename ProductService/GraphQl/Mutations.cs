@@ -1,9 +1,9 @@
 ﻿using HotChocolate.Subscriptions;
 using Microsoft.EntityFrameworkCore.Design;
-using PropertyServices.Database;
-using PropertyServices.Database.Models;
+using ProductService.Database;
+using ProductService.Database.Models;
 
-namespace PropertyServices.GraphQl
+namespace ProductService.GraphQl
 {
     public class Mutations
     {
@@ -15,7 +15,7 @@ namespace PropertyServices.GraphQl
             this.factory = factory;
         }
 
-        public async Task<Property> Upsert(Property property, [Service] ITopicEventSender sender)
+        public async Task<Order> Upsert(Order property, [Service] ITopicEventSender sender)
         {
             using var ctx = factory.CreateDbContext(new string[0]);
             if (property.Id == 0)

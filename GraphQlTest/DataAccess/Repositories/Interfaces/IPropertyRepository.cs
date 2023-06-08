@@ -1,6 +1,6 @@
-﻿using Database.Models;
+﻿using PropertyServices.Database.Models;
 
-namespace DataAccessLayer.Repositories.Interfaces
+namespace PropertyServices.DataAccess.Repositories.Interfaces
 {
     public interface IPropertyRepository
     {

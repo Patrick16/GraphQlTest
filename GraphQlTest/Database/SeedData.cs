@@ -1,9 +1,8 @@
 ﻿using Bogus;
-using Database;
-using Database.Models;
 using Microsoft.EntityFrameworkCore;
+using PropertyServices.Database.Models;
 
-namespace GraphQlTest
+namespace PropertyServices.Database
 {
     public static class SeedData
     {

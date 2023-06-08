@@ -1,12 +1,12 @@
-﻿using Database;
-using Database.Models;
-using Microsoft.EntityFrameworkCore.Design;
+﻿using Microsoft.EntityFrameworkCore.Design;
+using PropertyServices.Database;
+using PropertyServices.Database.Models;
 
-namespace GraphQlTest.GraphQl
+namespace PropertyServices.GraphQl
 {
     public class Queries
     {
-        [UsePaging(IncludeTotalCount =true)]
+        [UsePaging(IncludeTotalCount = true)]
         [UseProjection]
         [UseFiltering]
         [UseSorting]

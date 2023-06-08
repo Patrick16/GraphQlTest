@@ -1,12 +1,12 @@
-﻿using PropertyServices.Database.Models;
+﻿using ProductService.Database.Models;
 
-namespace PropertyServices.GraphQl
+namespace ProductService.GraphQl
 {
     public class Subscriptions
     {
         [Subscribe]
         [Topic(nameof(Mutations.Upsert))]
-        public Property OnPropertyChanged([EventMessage] Property property)
+        public Order OnPropertyChanged([EventMessage] Order property)
         {
             Console.WriteLine("Publish");
             return property;

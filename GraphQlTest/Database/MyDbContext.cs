@@ -1,7 +1,7 @@
-﻿using Database.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PropertyServices.Database.Models;
 
-namespace Database
+namespace PropertyServices.Database
 {
     public class MyDbContext : DbContext
     {

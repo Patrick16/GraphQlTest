@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using PropertyServices.DataAccess.Repositories;
-using PropertyServices.DataAccess.Repositories.Interfaces;
-using PropertyServices.Database;
-using PropertyServices.GraphQl;
+using ProductService.DataAccess.Repositories;
+using ProductService.DataAccess.Repositories.Interfaces;
+using ProductService.Database;
+using ProductService.GraphQl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +13,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
-builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddSingleton<IDesignTimeDbContextFactory<MyDbContext>, ContextFactory>();
 builder.Services.AddMemoryCache();
 
@@ -27,18 +28,9 @@ builder.Services.AddGraphQLServer()
     .AddSorting()
     .AddInMemorySubscriptions();
 
-//builder.Services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-//builder.Services.AddScoped<PropertyQuery>();
-//builder.Services.AddScoped<PropertyType>();
-//builder.Services.AddScoped<PaymentType>();
 builder.Services.AddDbContext<MyDbContext>(
     options => options.UseNpgsql(builder.Configuration["ConnectionStrings:GraphQlTestDb"]));
 
-//var sp = builder.Services.BuildServiceProvider();
-//builder.Services.AddSingleton<ISchema>(
-//new GraphQlSchema(
-//    new FuncDependencyResolver(
-//        t => sp.GetService(t))));
 
 var app = builder.Build();
 
@@ -48,7 +40,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 using (var scope = app.Services.CreateScope())
 {

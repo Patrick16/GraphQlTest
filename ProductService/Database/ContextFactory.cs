@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace PropertyServices.Database
+namespace ProductService.Database
 {
     public class ContextFactory : IDesignTimeDbContextFactory<MyDbContext>
     {
