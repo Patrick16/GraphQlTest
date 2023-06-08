@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using PropertyServices.DataAccess.Repositories;
-using PropertyServices.DataAccess.Repositories.Interfaces;
-using PropertyServices.Database;
-using PropertyServices.GraphQl;
+using PropertyService.DataAccess.Repositories;
+using PropertyService.DataAccess.Repositories.Interfaces;
+using PropertyService.Database;
+using PropertyService.GraphQl;
 
 var builder = WebApplication.CreateBuilder(args);
 

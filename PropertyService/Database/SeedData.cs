@@ -1,8 +1,8 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
-using PropertyServices.Database.Models;
+using PropertyService.Database.Models;
 
-namespace PropertyServices.Database
+namespace PropertyService.Database
 {
     public static class SeedData
     {

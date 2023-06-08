@@ -18,8 +18,8 @@ namespace ProductService.Database
             modelBuilder.Entity<Customer>().ToTable(nameof(Customer))
                 .HasKey(p => p.Id);
 
-            modelBuilder.Entity<Order>().HasMany(c => c.Products).WithOne();
-            modelBuilder.Entity<Order>().HasOne(c => c.Customer).WithOne();
+            modelBuilder.Entity<Order>().HasMany(c => c.Products).WithMany(x=>x.Orders);
+            modelBuilder.Entity<Order>().HasOne(c => c.Customer).WithMany(x=>x.Orders);
         }
 
         public DbSet<Order> Orders { get; set; }

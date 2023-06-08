@@ -1,8 +1,8 @@
-﻿using PropertyServices.DataAccess.Repositories.Interfaces;
-using PropertyServices.Database;
-using PropertyServices.Database.Models;
+﻿using PropertyService.DataAccess.Repositories.Interfaces;
+using PropertyService.Database;
+using PropertyService.Database.Models;
 
-namespace PropertyServices.DataAccess.Repositories
+namespace PropertyService.DataAccess.Repositories
 {
     public class PaymentRepository : IPaymentRepository
     {

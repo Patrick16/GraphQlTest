@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PropertyServices.Database.Models
+namespace PropertyService.Database.Models
 {
     public class Payment
     {

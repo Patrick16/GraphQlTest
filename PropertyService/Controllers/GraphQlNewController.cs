@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PropertyServices.Controllers
+namespace PropertyService.Controllers
 {
 
     [Route("[controller]")]

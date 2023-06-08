@@ -1,4 +1,4 @@
-﻿namespace PropertyServices.Database.Models
+﻿namespace PropertyService.Database.Models
 {
     public class Property
     {

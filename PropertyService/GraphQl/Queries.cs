@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Design;
-using PropertyServices.Database;
-using PropertyServices.Database.Models;
+using PropertyService.Database;
+using PropertyService.Database.Models;
 
-namespace PropertyServices.GraphQl
+namespace PropertyService.GraphQl
 {
     public class Queries
     {

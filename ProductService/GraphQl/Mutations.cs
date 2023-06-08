@@ -15,22 +15,22 @@ namespace ProductService.GraphQl
             this.factory = factory;
         }
 
-        public async Task<Order> Upsert(Order property, [Service] ITopicEventSender sender)
+        public async Task<Order> Upsert(Order order, [Service] ITopicEventSender sender)
         {
             using var ctx = factory.CreateDbContext(new string[0]);
-            if (property.Id == 0)
+            if (order.Id == 0)
             {
-                ctx.Add(property);
+                ctx.Add(order);
             }
             else
             {
-                ctx.Update(property);
+                ctx.Update(order);
             }
             await ctx.SaveChangesAsync();
 
-            await sender.SendAsync(nameof(Mutations.Upsert), property);
+            await sender.SendAsync(nameof(Mutations.Upsert), order);
 
-            return property;
+            return order;
         }
     }
 }
