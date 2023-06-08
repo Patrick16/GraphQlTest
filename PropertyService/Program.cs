@@ -1,3 +1,4 @@
+using Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using PropertyService.DataAccess.Repositories;
@@ -25,20 +26,13 @@ builder.Services.AddGraphQLServer()
     .AddProjections()
     .AddFiltering()
     .AddSorting()
-    .AddInMemorySubscriptions();
+    .AddInMemorySubscriptions()
+    .InitializeOnStartup()
+    .PublishSchemaDefinition(c => c
+      .SetName(ServicesNames.Properties));
 
-//builder.Services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-//builder.Services.AddScoped<PropertyQuery>();
-//builder.Services.AddScoped<PropertyType>();
-//builder.Services.AddScoped<PaymentType>();
 builder.Services.AddDbContext<MyDbContext>(
     options => options.UseNpgsql(builder.Configuration["ConnectionStrings:GraphQlTestDb"]));
-
-//var sp = builder.Services.BuildServiceProvider();
-//builder.Services.AddSingleton<ISchema>(
-//new GraphQlSchema(
-//    new FuncDependencyResolver(
-//        t => sp.GetService(t))));
 
 var app = builder.Build();
 

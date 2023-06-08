@@ -1,3 +1,4 @@
+using Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ProductService.DataAccess.Repositories;
@@ -26,7 +27,10 @@ builder.Services.AddGraphQLServer()
     .AddProjections()
     .AddFiltering()
     .AddSorting()
-    .AddInMemorySubscriptions();
+    .AddInMemorySubscriptions()
+    .InitializeOnStartup()
+    .PublishSchemaDefinition(c => c
+      .SetName(ServicesNames.Products));
 
 builder.Services.AddDbContext<MyDbContext>(
     options => options.UseNpgsql(builder.Configuration["ConnectionStrings:GraphQlTestDb"]));
