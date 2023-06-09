@@ -1,5 +1,7 @@
 using Common;
 using HotChocolate;
+using ProxyService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,7 +15,8 @@ builder.Services.AddHttpClient(ServicesNames.Properties, c => c.BaseAddress = ne
 
 builder.Services.AddGraphQLServer()
         .AddRemoteSchema(ServicesNames.Products)
-        .AddRemoteSchema(ServicesNames.Properties);
+        .AddRemoteSchema(ServicesNames.Properties)
+        .AddDiagnosticEventListener<ProxyExecutionEventListener>();
 
 var app = builder.Build();
 
