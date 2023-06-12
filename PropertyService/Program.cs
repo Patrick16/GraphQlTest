@@ -1,10 +1,10 @@
 using Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using PropertyService.DataAccess.Repositories;
-using PropertyService.DataAccess.Repositories.Interfaces;
 using PropertyService.Database;
 using PropertyService.GraphQl;
+using PropertyService.Repositories;
+using PropertyService.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,8 @@ builder.Services.AddGraphQLServer()
     .AddInMemorySubscriptions()
     .InitializeOnStartup()
     .PublishSchemaDefinition(c => c
-      .SetName(ServicesNames.Properties));
+      .SetName(ServicesNames.Properties))
+    .AddErrorFilter<CustomErrorFilter>();
 
 builder.Services.AddDbContext<MyDbContext>(
     options => options.UseNpgsql(builder.Configuration["ConnectionStrings:GraphQlTestDb"]));

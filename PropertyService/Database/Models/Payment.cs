@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PropertyService.Database.Models
+﻿namespace PropertyService.Database.Models
 {
+    [GraphQLDescription("Payment entity")]
     public class Payment
     {
+        [GraphQLDescription("Id")]
         public int Id { get; set; }
         public decimal Value { get; set; }
         public DateTime DateCreated { get; set; }

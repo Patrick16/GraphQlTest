@@ -1,5 +1,8 @@
 ﻿namespace ProductService.Database.Models;
 
+/// <summary>
+/// Customer entity
+/// </summary>
 public class Customer
 {
     public int Id { get; set; }

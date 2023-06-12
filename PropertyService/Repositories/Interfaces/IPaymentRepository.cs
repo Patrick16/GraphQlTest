@@ -1,6 +1,6 @@
 ﻿using PropertyService.Database.Models;
 
-namespace PropertyService.DataAccess.Repositories.Interfaces
+namespace PropertyService.Repositories.Interfaces
 {
     public interface IPaymentRepository
     {

@@ -1,5 +1,5 @@
-﻿using ProductService.DataAccess.Repositories.Interfaces;
-using ProductService.Database.Models;
+﻿using ProductService.Database.Models;
+using ProductService.Repositories.Interfaces;
 
 namespace ProductService.GraphQl
 {
@@ -11,6 +11,10 @@ namespace ProductService.GraphQl
         [UseSorting]
         public IEnumerable<Order> ReadOrders([Service] IOrderRepository _orderRepository)
             => _orderRepository.GetOrders();
+
+        [UseProjection]
+        public async Task<Order> ReadOrder([Service] IOrderRepository _orderRepository, int id)
+            => await _orderRepository.GetOrder(id);
 
         [UsePaging(IncludeTotalCount = true)]
         [UseProjection]

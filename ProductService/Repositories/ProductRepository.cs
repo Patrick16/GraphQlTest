@@ -1,8 +1,8 @@
-﻿using ProductService.DataAccess.Repositories.Interfaces;
-using ProductService.Database;
+﻿using ProductService.Database;
 using ProductService.Database.Models;
+using ProductService.Repositories.Interfaces;
 
-namespace ProductService.DataAccess.Repositories
+namespace ProductService.Repositories
 {
     public class ProductRepository : IProductRepository
     {

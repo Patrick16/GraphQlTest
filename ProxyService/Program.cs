@@ -1,5 +1,4 @@
 using Common;
-using HotChocolate;
 using ProxyService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +15,7 @@ builder.Services.AddHttpClient(ServicesNames.Properties, c => c.BaseAddress = ne
 builder.Services.AddGraphQLServer()
         .AddRemoteSchema(ServicesNames.Products)
         .AddRemoteSchema(ServicesNames.Properties)
+        .AddErrorFilter<CustomErrorFilter>()
         .AddDiagnosticEventListener<ProxyExecutionEventListener>();
 
 var app = builder.Build();
@@ -30,5 +30,6 @@ if (app.Environment.IsDevelopment())
 app.UseWebSockets();
 app.MapControllers();
 app.MapGraphQL("/graphql");
+app.UseGraphQLVoyager("/graphql-voyager");
 
 app.Run();
