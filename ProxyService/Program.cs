@@ -9,8 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient(ServicesNames.Products, c => c.BaseAddress = new Uri("http://localhost:8081/graphql"));
-builder.Services.AddHttpClient(ServicesNames.Properties, c => c.BaseAddress = new Uri("http://localhost:8082/graphql"));
+builder.Services.AddTransient<HeaderAddInterceptor>();
+builder.Services.AddHttpClient(ServicesNames.Products, c => c.BaseAddress = new Uri("http://localhost:8081/graphql"))
+    .AddHttpMessageHandler<HeaderAddInterceptor>();
+builder.Services.AddHttpClient(ServicesNames.Properties, c => c.BaseAddress = new Uri("http://localhost:8082/graphql"))
+    .AddHttpMessageHandler<HeaderAddInterceptor>();
 
 builder.Services.AddGraphQLServer()
         .AddRemoteSchema(ServicesNames.Products)

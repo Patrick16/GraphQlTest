@@ -31,6 +31,7 @@ builder.Services.AddGraphQLServer()
     .InitializeOnStartup()
     .PublishSchemaDefinition(c => c
       .SetName(ServicesNames.Products))
+        .AddHttpRequestInterceptor<CustomInterceptor>()
     .AddErrorFilter<CustomErrorFilter>();
 
 builder.Services.AddDbContext<MyDbContext>(
